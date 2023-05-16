@@ -11,6 +11,7 @@ const app = express();
 // middleware
 app.use(express.json());
 
+// cors 
 var cors = require('cors');
 app.use(cors());
 
