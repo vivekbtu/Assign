@@ -5,8 +5,8 @@ const {Usermodel} = require("../Models/user.model");
 
 const userRouter = express.Router();
 
-
 // get method
+// items/ 
 userRouter.get("/", async(req,res) => {
     // const params = req.query;
     try{
@@ -21,27 +21,8 @@ userRouter.get("/", async(req,res) => {
     
 })
 
-// pagination
-
-userRouter.get("/pagination", async(req,res) => {
-    const {page_no} = req.query;
-    const Id = Number(page_no);
-    
-    try{
-        const users = await Usermodel.find().limit(2).skip((Id - 1)*2);
-        res.send(users);
-    }
-    catch(err){
-
-        res.send("Something error in get method");
-        console.log(err);
-    }
-    
-})
-
-
-// users/create
 // post method
+// items/create
 userRouter.post("/create", async(req,res) => {
 
     try{
@@ -62,10 +43,10 @@ userRouter.post("/create", async(req,res) => {
 })
 
 // patch method
+// items/update/{id}
 userRouter.patch("/update/:userID", async(req,res) => {
 
     const Id = req.params.userID;
-    // Id = Number(Id);
     const payload = req.body;
 
     try{
@@ -79,6 +60,7 @@ userRouter.patch("/update/:userID", async(req,res) => {
 })
 
 // delete method
+// items/delete/{id}
 userRouter.delete("/delete/:userID", async(req,res) => {
 
     const Id = req.params.userID;
